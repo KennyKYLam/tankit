@@ -54,8 +54,9 @@ $("#createtask-btn").click(function() {
     var key = "abc";
     var checkmark = "glyphicon glyphicon-unchecked";
     $(".tasklist").append("<div id=\"" + key + "\"class=\"todotask\"> <span class=\"" + checkmark + "\"></span> <h3>" + newtask + "</h3> <div id=\"div1\"></div> <div class=\"taskassignee\"> Assignee: " + assignee + "</div> <div class=\"taskstatus\"> Status: " + status + "</div> <div class=\"taskduedate\"> Due Date: " + duedate + "</div> <div class=\"taskstartdate\"> Date Requested: " + startdate + "</div></div>");
-    start();
-    // $(".todotask.sample").remove();
+    $(document).on("click", "span.glyphicon-unchecked", function() {
+        $(this).attr('class', 'glyphicon glyphicon-check');
+    });
 });
 
 $("#sync-btn").click(function() {
