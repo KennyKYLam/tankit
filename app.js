@@ -55,7 +55,7 @@ app.post("/checkout", function (req, res) {
 });
 
 gateway.transaction.sale({
-  amount: '10.00',
+  amount: '5.00',
   paymentMethodNonce: "fake-valid-visa-nonce",
 }, function (err, result) {
 });
