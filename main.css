@@ -1,0 +1,161 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+.main-cot {
+    z-index: 2;
+}
+
+body {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    font-family: helvetica;
+    color: #333;
+    top: -20px;
+    background-color: #FFEB3B;
+}
+
+h1 {
+    padding-top: 30px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 20px;
+    margin: 0;
+    margin-bottom: 15px;
+    color: #696969;
+}
+
+h3 {
+    margin: 0;
+}
+
+.header {
+    position: relative;
+    font-size: 25px;
+    text-align: center;
+    width: 100%;
+    background-color: #fff;
+}
+
+.motto {
+    font-size: 16px;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    display: inline-block;
+    padding: 10px;
+}
+
+.home li {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #333;
+    opacity: 0.8;
+}
+
+.tasks-cot {
+    width: 100%;
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.inputtask-cot {
+    width: 100%;
+    padding: 10px 2%;
+    background-color: #FBC02D;
+}
+
+.tasklist {
+    width: 100%;
+    padding: 10px 2%;
+    background-color: inherit;
+}
+
+.todotask {
+    margin: 10px auto;
+    width: 100%;
+    border-radius: 5px;
+    border: #696969 2px solid;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.taskname {
+    width: 100%;
+}
+
+.taskassignee {}
+
+.login-cot {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.home-cot {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.learnmore {
+    background-color: #fff;
+    width: 100%;
+}
+
+.learnmore-list {
+    text-align: left;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.currentuser {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.glyphicon.glyphicon-check {
+    color: green;
+    font-size: 40px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 50px;
+}
+
+.glyphicon.glyphicon-unchecked {
+    color: #696969;
+    font-size: 40px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 50px;
+}
+
+.glyphicon.glyphicon-unchecked:hover {
+    cursor: pointer;
+}
+
+#sync-btn{
+    float: right;
+}

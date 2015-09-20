@@ -1,0 +1,101 @@
+<html>
+
+<head>
+    <title>tankit</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="d3.css">
+</head>
+
+<body class="task">
+    <div class="main-cot">
+        <div class="header">
+            <h1>tankit.</h1>
+            <div class="motto"><span id="mottotext">Be a man and tank that stupid task.</span></div>
+            <div class="currentuser">Logged in as Kenny</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="task.html">Tasks</a></li>
+            </ul>
+        </div>
+        <div class="tasks-cot">
+            <div class="inputtask-cot">
+                <h2>Create New Task</h2>
+                <div class="form-group">
+                    <label for="newtaskname">Task name:</label>
+                    <input type="text" class="form-control" id="newtaskname" value="Do dishes">
+                </div>
+                <div class="form-group">
+                    <label for="newtaskduedate">Due Date:</label>
+                    <input type="text" class="form-control" id="newtaskduedate" value="09-25">
+                </div>
+                <div class="form-group">
+                    <label for="newtaskassignee">Assignee</label>
+                    <input type="text" class="form-control" id="newtaskassignee" value="Kenny">
+                </div>
+                <div class="btn btn-default" aria-label="createtask" id="createtask-btn">Create</div>
+            </div>
+            <div class="tasklist">
+                <div class="btn btn-default" aria-label="sync" id="sync-btn">Sync</div>
+                <h2>To Do Task List</h2>
+                <div class="todotask sample">
+                    <span class="glyphicon glyphicon-unchecked"></span>
+                    <h3>Do Laundry</h3>
+                    <div id="div1"></div>
+                    <div class="taskassignee">Assignee: Kenny</div>
+                    <div class="taskstatus">Status: To be actioned</div>
+                    <div class="taskduedate">Due Date: 09-22</div>
+                    <div class="taskstartdate">Date Requested: 09-19</div>
+                </div>
+            </div>
+            <form id="checkout" method="post" action="/checkout">
+                <div id="payment-form"></div>
+                <input type="submit" value="Pay $10">
+            </form>
+            <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+            <script>
+            // We generated a client token for you so you can test out this code
+            // immediately. In a production-ready integration, you will need to
+            // generate a client token on your server (see section below).
+            var clientToken = "eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiJiNGY0NDRmOGQxYjkxN2VjN2Y1MGRjZDQ5YmYwYTc3MzI1NGEzYzkyMTM5NDJmNmIxNjkxYWY1NWM5ZTM3NTJhfGNyZWF0ZWRfYXQ9MjAxNS0wOS0yMFQwNDoyNDowNC4wMjc1NzI2MDkrMDAwMFx1MDAyNm1lcmNoYW50X2lkPTM0OHBrOWNnZjNiZ3l3MmJcdTAwMjZwdWJsaWNfa2V5PTJuMjQ3ZHY4OWJxOXZtcHIiLCJjb25maWdVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvMzQ4cGs5Y2dmM2JneXcyYi9jbGllbnRfYXBpL3YxL2NvbmZpZ3VyYXRpb24iLCJjaGFsbGVuZ2VzIjpbXSwiZW52aXJvbm1lbnQiOiJzYW5kYm94IiwiY2xpZW50QXBpVXJsIjoiaHR0cHM6Ly9hcGkuc2FuZGJveC5icmFpbnRyZWVnYXRld2F5LmNvbTo0NDMvbWVyY2hhbnRzLzM0OHBrOWNnZjNiZ3l3MmIvY2xpZW50X2FwaSIsImFzc2V0c1VybCI6Imh0dHBzOi8vYXNzZXRzLmJyYWludHJlZWdhdGV3YXkuY29tIiwiYXV0aFVybCI6Imh0dHBzOi8vYXV0aC52ZW5tby5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tIiwiYW5hbHl0aWNzIjp7InVybCI6Imh0dHBzOi8vY2xpZW50LWFuYWx5dGljcy5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tIn0sInRocmVlRFNlY3VyZUVuYWJsZWQiOnRydWUsInRocmVlRFNlY3VyZSI6eyJsb29rdXBVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvMzQ4cGs5Y2dmM2JneXcyYi90aHJlZV9kX3NlY3VyZS9sb29rdXAifSwicGF5cGFsRW5hYmxlZCI6dHJ1ZSwicGF5cGFsIjp7ImRpc3BsYXlOYW1lIjoiQWNtZSBXaWRnZXRzLCBMdGQuIChTYW5kYm94KSIsImNsaWVudElkIjpudWxsLCJwcml2YWN5VXJsIjoiaHR0cDovL2V4YW1wbGUuY29tL3BwIiwidXNlckFncmVlbWVudFVybCI6Imh0dHA6Ly9leGFtcGxlLmNvbS90b3MiLCJiYXNlVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhc3NldHNVcmwiOiJodHRwczovL2NoZWNrb3V0LnBheXBhbC5jb20iLCJkaXJlY3RCYXNlVXJsIjpudWxsLCJhbGxvd0h0dHAiOnRydWUsImVudmlyb25tZW50Tm9OZXR3b3JrIjp0cnVlLCJlbnZpcm9ubWVudCI6Im9mZmxpbmUiLCJ1bnZldHRlZE1lcmNoYW50IjpmYWxzZSwiYnJhaW50cmVlQ2xpZW50SWQiOiJtYXN0ZXJjbGllbnQzIiwiYmlsbGluZ0FncmVlbWVudHNFbmFibGVkIjpmYWxzZSwibWVyY2hhbnRBY2NvdW50SWQiOiJhY21ld2lkZ2V0c2x0ZHNhbmRib3giLCJjdXJyZW5jeUlzb0NvZGUiOiJVU0QifSwiY29pbmJhc2VFbmFibGVkIjpmYWxzZSwibWVyY2hhbnRJZCI6IjM0OHBrOWNnZjNiZ3l3MmIiLCJ2ZW5tbyI6Im9mZiJ9";
+
+            braintree.setup(clientToken, "dropin", {
+                container: "payment-form"
+            });
+            </script>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="d3.min.js"></script>
+    <script type="text/javascript" src="radialProgress.js"></script>
+    <script language="JavaScript">
+    var div1 = d3.select(document.getElementById('div1'));
+
+    start();
+
+    function labelFunction(val, min, max) {
+
+    }
+
+    function deselect() {
+        div1.attr("class", "radial");
+    }
+
+    function start() {
+
+        var rp1 = radialProgress(document.getElementById('div1'))
+            .label("2 Days left")
+            .diameter(100)
+            .value(78)
+            .render();
+
+    }
+    </script>
+</body>
+
+</html>
