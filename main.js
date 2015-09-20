@@ -83,6 +83,9 @@ $("#sync-btn").click(function() {
                         checkmark = "glyphicon glyphicon-check";
                     }
                     $(".tasklist").append("<div id=\"" + key + "\"class=\"todotask\"> <span class=\"" + checkmark + "\"></span> <h3>" + newtask + "</h3> <div id=\"div1\"></div><div class=\"taskassignee\"> Assignee: " + assignee + "</div> <div class=\"taskstatus\"> Status: " + status + "</div> <div class=\"taskduedate\"> Due Date: " + duedate + "</div> <div class=\"taskstartdate\"> Date Requested: " + startdate + "</div></div>");
+                    $(document).on("click", "span.glyphicon-unchecked", function() {
+                        $(this).attr('class', 'glyphicon glyphicon-check');
+                    });
                 }
             }
         }
@@ -119,13 +122,9 @@ $(".glyphicon.glyphicon-unchecked").click(function() {
     $(this).attr('class', 'glyphicon glyphicon-check');
     var ref = new Firebase('https://kkyl.firebaseio.com/users/' + currentuser);
     var id = $(this).parent().attr('id');
-    console.log("id "+id);
+    console.log("id " + id);
     // var hopperRef = id.child("gracehop");
     // hopperRef.update({
     //     "status": "Completed."
     // });
-});
-
-$('.glyphicon.glyphicon-unchecked').on('click', 'span.glyphicon-unchecked', function(){
-    alert("clicked");
 });
